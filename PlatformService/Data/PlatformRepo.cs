@@ -4,6 +4,12 @@ namespace PlatformService.Data
 {
     public class PlatformRepo : IPlatformRepo
     {
+        private readonly AppDbContext _context;
+
+        public PlatformRepo(AppDbContext context)
+        {
+            _context = context;
+        }
         public void CreatePlatform(Platform plat)
         {
             throw new NotImplementedException();
@@ -21,7 +27,7 @@ namespace PlatformService.Data
 
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return (_context.SaveChanges() >= 0 );
         }
     }
 }
